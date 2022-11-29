@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+</head>
+<body>
+<div style="justify-content: center;text-align: center;color: #238381;margin-top: 100px;">
+	Designed with | by <i style="color: #fb0909;" class="fa-solid fa-heart"></i> DenTay's     
+</div>
+<div align="center">
+    <h1 style="color: #b5b010">Product List</h1>
+    <button style="background-color: aquamarine;;border-radius: 4px;">
+        <a href="new" style="text-decoration: none;">Create New Product</a>
+    </button>
+    
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Product ID <span style="color:red;margin-left: 10px;">♥</span></th>
+                <th>Name<span style="color:red;margin-left: 10px;">♦</span></th>
+                <th>Brand<span style="color:black;margin-left: 10px;">♣</span></th>
+                <th>Made In<span style="color:black;margin-left: 10px;">♠</span></th>
+                <th>Price<span style="color:red;margin-left: 10px;">♦</span></th>
+                <th>Actions<span style="color:red;margin-left: 10px;">♥</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}">
+            	<td th:text="${product.id}">Product ID</td>
+                <td th:text="${product.name}">Name</td>
+                <td th:text="${product.brand}">Brand</td>
+                <td th:text="${product.madein}">Made in</td>
+                <td th:text="${product.price}">Price</td>
+                
+                <td>
+                	<button style="background-color: rgb(250 188 46);border-radius: 4px;">
+                	<a style="text-decoration: none;color: #fff;"
+                		th:href="@{'/edit/' + ${product.id}}">Edit</a>
+                	</button>
+                	&nbsp;&nbsp;&nbsp;
+                	<button style="background-color: rgb(235 62 34);border-radius: 4px;">
+                	<a style="text-decoration: none;color: #fff;"
+                		th:href="@{'/delete/' + ${product.id}}">Delete</a>
+                	</button>
+                	
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> 
+   
+</body>
+</html>
